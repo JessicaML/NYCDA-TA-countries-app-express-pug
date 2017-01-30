@@ -1,0 +1,10 @@
+extends ./application.pug
+
+block content
+  .container
+    h1 All Countries
+    hr
+    each country in countrys
+      .card.card-block
+        h4(class="card-title")= country.name + " " + country.language
+        p(class="card-text")= "Email: " + country.capital

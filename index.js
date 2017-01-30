@@ -1,27 +1,12 @@
-const express = require('express'),
-      morgan = require('morgan'),
-      bodyParser = require('body-parser'),
+var express = require('express'),
       pug = require('pug'),
-      fs = require('fs');
-
-const userRoutes = require('./routes/users'),
-      searchRoutes = require('./routes/search');
-
-var app = express(),
-    userStore = require('./user-store');
+      app = express(),
+      userStore = require('./country-reader');
 
 app.set('view engine', 'pug');
 
-app.use(morgan('dev'));
-
-app.use(bodyParser.urlencoded({ extended: false }));
-
-app.use('/users', userRoutes);
-
-app.use('/search', searchRoutes);
-
 app.get('/', (request, response) => {
-  response.render('users/index', { users: userStore.getUsers() });
+  response.render('index', { countrys: userStore.getUsers() });
 });
 
 app.listen(3000, () => {
