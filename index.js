@@ -1,12 +1,12 @@
 var express = require('express'),
       pug = require('pug'),
       app = express(),
-      userStore = require('./country-reader');
+      countryStore = require('./country-reader');
 
 app.set('view engine', 'pug');
 
 app.get('/', (request, response) => {
-  response.render('index', { countrys: userStore.getUsers() });
+  response.render('index', { bears: countryStore.getCountries() });
 });
 
 app.listen(3000, () => {
